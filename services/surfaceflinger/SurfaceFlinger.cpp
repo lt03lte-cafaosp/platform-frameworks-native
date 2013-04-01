@@ -318,8 +318,19 @@ status_t SurfaceFlinger::readyToRun()
     return NO_ERROR;
 }
 
+static void write_file(const char *file_path, const char * str, int count)
+{
+    int fd = -1;
+    fd = open(file_path, O_RDWR);
+    if (fd >= 0) {
+        write(fd, str, count);
+        close(fd);
+    }
+}
+
 void SurfaceFlinger::startBootAnim() {
     // start boot animation
+    write_file("/sys/class/leds/lcd-backlight/brightness", "100", 3);
     property_set("service.bootanim.exit", "0");
     property_set("ctl.start", "bootanim");
 }
