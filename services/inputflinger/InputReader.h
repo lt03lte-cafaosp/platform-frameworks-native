@@ -228,11 +228,11 @@ struct InputReaderConfiguration {
     // will cover this portion of the display diagonal.
     float pointerGestureZoomSpeedRatio;
 
-    // True to show the location of touches on the touch screen as spots.
-    bool showTouches;
-    
     // Ignore finger touches this long after the stylus has been used (including hover)
     nsecs_t stylusPalmRejectionTime;
+
+    // True to show the location of touches on the touch screen as spots.
+    bool showTouches;
 
     InputReaderConfiguration() :
             virtualKeyQuietTime(0),
